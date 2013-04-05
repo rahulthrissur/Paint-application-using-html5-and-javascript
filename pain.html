@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<title>Paint Application</title>
+<style type="text/css">
+#realCanvas, #tempCanvas {position: absolute;left:280px;top:50px;border: 5px solid;cursor: crosshair;}
+#tool1{position:absolute; left:280px; top:520px}
+#tool2{position:absolute; left:390px; top:520px}
+#tool3{position:absolute; left:465px; top:520px}
+#table1{position: absolute;left:600px;top:518px; }
+#files{position: absolute;color:#000;left:1000px;top:80px;height:570px ;width: 250px;overflow:auto;}
+</style>
+</head>
+<body>
+  <div id="files" ><ol>
+<label>Files:</label>
+    {% for name in py_all %}
+      <li><a href="#" class="img_files">{{ name }}</a>
+    {% endfor %}
+  </ol></div>
+  
+    <br><button id="tool1" type="button" onclick="curr_tool('rectangle')">RECTANGLE</button></br>
+    <br><button id="tool2" type="button" onclick="curr_tool('circle')">CIRCLE</button></br>
+    <br><button id="tool3" type="button" onclick="clears()">CLEAR</button></br>
+
+  <div>
+    <canvas id="realCanvas" width="680" height="460" style=" background-color: #ffffff; z-index: 0" ></canvas>
+    <canvas id="tempCanvas" width="680" height="460" style="z-index: 1"></canvas>
+  </div>
+ 
+  <table id="table1" >
+   <tr>
+   <tr>
+    
+    <td><button onclick="color('black')" style="background-color: black; height: 20px; width: 20px;"></button></td>
+    <td><button onclick="color('green')" style="background-color: green; height: 20px; width: 20px;"></button></td>
+    <td><button onclick="color('blue')" style="background-color: blue; height: 20px; width: 20px;"></button></td>
+    <td><button onclick="color('yellow')" style="background-color: yellow; height: 20px; width: 20px;"></button></td>
+    <td><button onclick="color('red')" style="background-color: red; height: 20px; width: 20px;"></button></td>
+    <td><button onclick="color('orange')" style="background-color: orange; height: 20px; width: 20px;"></button></td>
+    <td><button onclick="color('brown')" style="background-color: brown; height: 20px; width: 20px;"></button></td>
+    <td><button onclick="color('grey')" style="background-color: grey; height: 20px; width: 20px;"></button></td>
+    <td><button onclick="color('violet')" style="background-color: violet; height: 20px; width: 20px;"></button></td>
+    <td><button onclick="color('#8b00ff')" style="background-color: #8b00ff; height: 20px; width: 20px;"></button></td>
+    <td><input type="checkbox" id="fill"/>Fill</td>
+    <td><input type="checkbox" id="outline" checked="checked"/>Outline</td>
+    </tr>
+  </table>
+
+  <input id="fname" style="position: absolute; left:1000px; top:40px; width: 180px"></input>
+  <button id="tools" onclick="createNew()" style="position: absolute; left:540px; top:520px;">NEW</button>
+  <button id="tools" onclick="save()" style="position: absolute; left:1000px; top:70px">SAVE</button>
+  <label id="name" style="position: absolute; left:300px; top:20px; color: #E0E0E0 ;"></label>
+<h2 style="position: absolute; left:500px;top:0px">PAINT APPLICATION</h2>
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script>py_data = {{ py_str }};</script>
+  <script src="/jscript/paintscript.js"> </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+application: new-paint
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /jscript
+  static_dir: jscript
+- url: /.*
+  script: paint.app
+
+libraries:
+- name: jinja2
+  version: latest
